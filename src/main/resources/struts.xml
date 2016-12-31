@@ -6,12 +6,14 @@
 <struts>
 
     <package name="default" extends="struts-default" namespace="/user">
-        <action name="list" class="org.zk.struts2Demo.action.UserAction" method="list">
+        <action name="list" class="userAction" method="list">
             <result name="success" >/view/user/userList.jsp</result>
         </action>
-        <action name="add" class="org.zk.struts2Demo.action.UserAction" method="add">
+        <action name="add" class="userAction" method="add">
             <result name="success" >/view/user/userForm.jsp</result>
         </action>
     </package>
+
+
 
 </struts>
