@@ -5,6 +5,9 @@
 
 <struts>
 
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.convention.result.path" value="/view"/>
+
     <!--<package name="default" extends="struts-default" namespace="/user">
         <action name="list" class="org.zk.struts2Demo.action.UserAction" method="list">
             <result name="success" >/view/user/userList.jsp</result>

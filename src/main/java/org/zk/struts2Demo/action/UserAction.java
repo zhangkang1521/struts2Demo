@@ -8,18 +8,18 @@ import org.apache.struts2.convention.annotation.Result;
 /**
  * Created by Administrator on 2016/4/3.
  */
-@Namespace("/user")
+//@Namespace("/user")
 public class UserAction {
 
 
-    @Action(
-            value = "list",
-            results = {
-                    @Result(name = "success", location = "/view/user/userList.jsp"),
-                    @Result(name = "success2", location = "/view/user/userList2.jsp")
-            }
-
-    )
+//    @Action(
+//            value = "list",
+//            results = {
+//                    @Result(name = "success", location = "/view/user/userList.jsp"),
+//                    @Result(name = "success2", location = "/view/user/userList2.jsp")
+//            }
+//
+//    )
     public String list(){
         return "success2";
     }
@@ -27,5 +27,9 @@ public class UserAction {
     public String add(){
         return "success";
     }
+
+//    public String execute(){
+//        return "success";
+//    }
 
 }
