@@ -8,7 +8,7 @@ public class UserAction {
 
 
     public String list(){
-        return "success";
+        return "input";
     }
 
     public String add(){

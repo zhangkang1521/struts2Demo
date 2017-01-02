@@ -4,13 +4,13 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <constant name="struts.devMode" value="true"/>
 
-    <package name="default" extends="struts-default" namespace="/user">
-        <action name="list" class="org.zk.struts2Demo.action.UserAction" method="list">
-            <result name="success" >/view/user/userList.jsp</result>
-        </action>
-        <action name="add" class="org.zk.struts2Demo.action.UserAction" method="add">
-            <result name="success" >/view/user/userForm.jsp</result>
+    <include file="action/login.xml"/>
+
+    <package name="test" namespace="/test" extends="struts-default">
+        <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TestAction">
+            <result>/view/account/myAccount.jsp</result>
         </action>
     </package>
 
