@@ -2,6 +2,9 @@ package org.zk.struts2Demo.action.test;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.interceptor.PreResultListener;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -9,13 +12,14 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Administrator on 1/2/2017.
  */
-public class TestAction implements ServletRequestAware, ServletResponseAware{
+public class TestAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -63,6 +67,29 @@ public class TestAction implements ServletRequestAware, ServletResponseAware{
         response.addCookie(cookie);
         System.out.println(cookie);
         return Action.SUCCESS;
+    }
+
+    public String preResult() {
+        ActionInvocation invocation = ActionContext.getContext().getActionInvocation();
+        invocation.addPreResultListener(new PreResultListener() {
+            public void beforeResult(ActionInvocation invocation, String resultCode) {
+                System.out.println("resultCode: " + resultCode);
+                invocation.getInvocationContext().put("a", "AA");
+            }
+        });
+        addActionMessage("hello");
+        return Action.SUCCESS;
+    }
+
+    public String exception() throws Exception{
+        String e = request.getParameter("e");
+        if ("sql".equals(e)) {
+            throw new SQLException();
+        } else if("exception".equals(e)){
+            throw new IllegalArgumentException("xx");
+        } else {
+            return SUCCESS;
+        }
     }
 
     public void setServletRequest(HttpServletRequest request) {

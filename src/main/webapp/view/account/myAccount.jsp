@@ -5,7 +5,7 @@
     <title>我的账户</title>
 </head>
 <body>
-欢迎您：<s:property value="username"></s:property>
-| ${cookie.user.value}
+<%--欢迎您：<s:property value="username"></s:property>
+| ${cookie.user.value}--%>
 </body>
 </html>

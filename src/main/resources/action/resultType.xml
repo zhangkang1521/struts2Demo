@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!-- http://localhost:8080/resultType/test.action?m=testFreemarker -->
+    <!-- 参考：http://chouyi.iteye.com/blog/1562422 -->
+    <package name="resultType" namespace="/resultType" extends="struts-default">
+        <action name="test" class="org.zk.struts2Demo.action.test.ResultTypeAction">
+            <!-- 同一请求 -->
+            <result name="testChain" type="chain">
+                <param name="actionName">test</param>
+                <param name="namespace">/next</param>
+            </result>
+            <!-- 两个请求，只能请求另外一个Action -->
+            <result name="testRedirectAction" type="redirectAction">
+                <param name="actionName">test</param>
+                <param name="namespace">/next</param>
+            </result>
+            <!-- 两个请求，请求另外一个url，和上面redirectAction效果相同 -->
+            <result name="testRedirect" type="redirect">
+                <param name="location">/next/test.action</param>
+            </result>
+            <!-- freemarker 视图 -->
+            <result name="testFreemarker" type="freemarker">
+                <param name="location">/view/test/test.tpl</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="next" namespace="/next" extends="struts-default">
+        <action name="test" class="org.zk.struts2Demo.action.test.NextAction">
+            <result>/view/test/next.jsp</result>
+        </action>
+    </package>
+
+</struts>

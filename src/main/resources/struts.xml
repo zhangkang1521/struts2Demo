@@ -5,13 +5,30 @@
 
 <struts>
     <constant name="struts.devMode" value="true"/>
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="true" />-->
 
-    <include file="action/login.xml"/>
 
-    <package name="test" namespace="/test" extends="struts-default">
+    <!-- 统一异常处理 -->
+    <package name="my-struts-default" extends="struts-default" abstract="true">
+        <global-results>
+            <result name="sqlException">/view/commons/sqlException.jsp</result>
+            <result name="exception">/view/commons/exception.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.sql.SQLException" result="sqlException"></exception-mapping>
+            <exception-mapping exception="java.lang.Exception" result="exception"></exception-mapping>
+        </global-exception-mappings>
+    </package>
+
+    <package name="test" namespace="/test" extends="my-struts-default">
         <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TestAction">
-            <result>/view/account/myAccount.jsp</result>
+            <result>/view/test/test.jsp</result>
         </action>
     </package>
+
+    <include file="action/login.xml"/>
+    <include file="action/resultType.xml"/>
+
+
 
 </struts>
