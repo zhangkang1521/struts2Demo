@@ -13,5 +13,14 @@
     <filter-name>struts2</filter-name>
     <url-pattern>*.action</url-pattern>
   </filter-mapping>
+  
+  <servlet>
+    <servlet-name>testServlet</servlet-name>
+    <servlet-class>org.zk.struts2Demo.action.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>testServlet</servlet-name>
+    <url-pattern>/test.s</url-pattern>
+  </servlet-mapping>
 
 </web-app>
