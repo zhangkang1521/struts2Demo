@@ -1,8 +1,10 @@
 package org.zk.struts2Demo.action;
 
+import freemarker.cache.WebappTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,8 +44,10 @@ public class TestServlet extends HttpServlet {
             //创建一个合适的Configration对象
             Configuration configuration = new Configuration(Configuration.VERSION_2_3_0);
             configuration.setLocalizedLookup(false);
-            String ctxPath = req.getServletContext().getRealPath("/");
-            configuration.setDirectoryForTemplateLoading(new File(ctxPath));
+            configuration.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+//            String ctxPath = req.getServletContext().getRealPath("/");
+//            configuration.setDirectoryForTemplateLoading(new File(ctxPath));
+            configuration.setTemplateLoader(new WebappTemplateLoader(req.getServletContext()));
             configuration.setObjectWrapper(new DefaultObjectWrapper(Configuration.VERSION_2_3_0));
             //获取或创建一个模版。
             Template template = configuration.getTemplate("/view/test/servletFreemarker.tpl");
