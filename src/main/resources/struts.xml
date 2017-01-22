@@ -20,9 +20,9 @@
         </global-exception-mappings>
     </package>
 
-    <package name="test" namespace="/test" extends="my-struts-default">
+    <package name="test" namespace="/test" extends="struts-default">
         <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TestAction">
-            <result>/view/test/test.jsp</result>
+            <result>/view/test/{1}.jsp</result>
         </action>
     </package>
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+    <description><![CDATA["自定义标签库"]]></description>
+    <display-name>my Tags</display-name>
+    <tlib-version>2.3</tlib-version>
+    <short-name>my</short-name>
+    <uri>/my-tags</uri>
+
+    <tag>
+        <description><![CDATA[自定义标签hello]]></description>
+        <name>hello</name>
+        <tag-class>org.zk.struts2Demo.tags.HelloTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>loop</name>
+        <tag-class>org.zk.struts2Demo.tags.BodyTagExample</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>counts</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>display</name>
+        <tag-class>org.zk.struts2Demo.tags.TestBodyTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

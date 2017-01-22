@@ -23,6 +23,7 @@ public class TestAction extends ActionSupport implements ServletRequestAware, Se
 
     private HttpServletRequest request;
     private HttpServletResponse response;
+    private String username;
 
     public String servletActionContext(){
         ServletActionContext.getRequest();
@@ -90,6 +91,20 @@ public class TestAction extends ActionSupport implements ServletRequestAware, Se
         } else {
             return SUCCESS;
         }
+    }
+
+    public String ognl() throws Exception {
+        username = "zk";
+        request.setAttribute("username", "zk@request");
+        return SUCCESS;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setServletRequest(HttpServletRequest request) {

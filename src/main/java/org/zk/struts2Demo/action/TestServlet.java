@@ -30,7 +30,13 @@ public class TestServlet extends HttpServlet {
         String action = req.getParameter("action");
         if("freemarker".equals(action)) {
             testFreemarker(req, resp);
+        } else if("tag".equals(action)) {
+            testTag(req, resp);
         }
+    }
+
+    public void testTag(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getRequestDispatcher("/view/test/tag.jsp").forward(req, resp);
     }
 
     /**
