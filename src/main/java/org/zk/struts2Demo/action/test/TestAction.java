@@ -99,6 +99,10 @@ public class TestAction extends ActionSupport implements ServletRequestAware, Se
         return SUCCESS;
     }
 
+    public String theme() {
+        return SUCCESS;
+    }
+
     public String getUsername() {
         return username;
     }
