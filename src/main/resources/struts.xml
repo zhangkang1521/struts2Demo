@@ -45,6 +45,19 @@
         </action>
     </package>
 
+    <package name="token" extends="struts-default">
+        <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TokenAction">
+            <result name="input">/view/test/tokenForm.jsp</result>
+            <result name="success">/view/test/tokenSuccess.jsp</result>
+            <result name="invalid.token">/view/test/tokenFail.jsp</result>
+
+            <interceptor-ref name="tokenSession">
+                <param name="excludeMethods">input</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+    </package>
+
     <include file="action/login.xml"/>
     <include file="action/resultType.xml"/>
 
