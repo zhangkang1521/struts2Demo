@@ -45,7 +45,7 @@
         </action>
     </package>
 
-    <package name="token" extends="struts-default">
+    <package name="token" extends="struts-default" namespace="/token">
         <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TokenAction">
             <result name="input">/view/test/tokenForm.jsp</result>
             <result name="success">/view/test/tokenSuccess.jsp</result>
@@ -58,7 +58,7 @@
         </action>
     </package>
 
-    <package name="ajax" extends="struts-default">
+    <package name="ajax" extends="struts-default" namespace="/ajax">
         <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.AjaxAction">
             <result name="input">/view/test/tokenForm.jsp</result>
             <result name="success" type="stream">
@@ -69,10 +69,24 @@
     </package>
 
     <!-- http://localhost:8080/ajax2/test.action -->
-    <package name="ajax2" extends="json-default">
+    <package name="ajax2" extends="json-default" namespace="/ajax2">
         <action name="test"  class="org.zk.struts2Demo.action.test.Ajax2Action">
             <result type="json">
             </result>
+        </action>
+    </package>
+
+    <!-- ajax 进行token验证后，需要刷新表单的token，如果是token重复需要给出提示-->
+    <package name="ajaxToken" extends="json-default" namespace="/ajaxToken">
+        <action name="*" method="{1}"  class="org.zk.struts2Demo.action.test.AjaxTokenAction">
+            <result name="input">/view/test/ajaxTokenForm.jsp</result>
+            <result name="success" type="json">
+            </result>
+            <result name="invalid.token">/view/test/tokenFail.jsp</result>
+            <interceptor-ref name="token">
+                <param name="excludeMethods">input</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
     </package>
 
