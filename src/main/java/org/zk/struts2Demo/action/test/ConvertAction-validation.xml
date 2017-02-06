@@ -1,0 +1,30 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+
+    <!--<field name="username">
+        <field-validator type="requiredstring">
+            <message>必须输入用户名</message>
+        </field-validator>
+        <field-validator type="regex">
+            <param name="regex"><![CDATA[(\w{4,25})]]></param>
+            <message>用户名为4-25个字符</message>
+        </field-validator>
+    </field>-->
+    <field name="age">
+        <field-validator type="int">
+            <param name="min">13</param>
+            <param name="max">20</param>
+            <message>
+                必须在13至20之间
+            </message>
+        </field-validator>
+    </field>
+    <!-- 使用visitor校验整个实体类 -->
+    <field name="user">
+        <field-validator type="visitor">
+            <param name="context">userContext</param>
+            <message></message>
+        </field-validator>
+    </field>
+</validators>

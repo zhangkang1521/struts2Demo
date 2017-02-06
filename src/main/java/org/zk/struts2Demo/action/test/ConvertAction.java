@@ -10,6 +10,7 @@ import java.util.Date;
  * Created by zhangkang on 2017/1/22.
  */
 public class ConvertAction extends ActionSupport{
+    private String username;
     private Integer age;
     private Date birthday;
 
@@ -20,7 +21,7 @@ public class ConvertAction extends ActionSupport{
     }
 
     public String test1() throws Exception {
-        System.out.println(age);
+        System.out.println(user);
         return SUCCESS;
     }
 
@@ -46,5 +47,13 @@ public class ConvertAction extends ActionSupport{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

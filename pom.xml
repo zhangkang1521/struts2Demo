@@ -30,6 +30,11 @@
             <artifactId>struts2-json-plugin</artifactId>
             <version>${struts2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
         <!-- http://5563447.blog.51cto.com/5553447/1261520 -->
         <!-- tomcat7 对应servlet-api 3.0, jsp-api 2.2-->
@@ -60,5 +65,22 @@
     </dependencies>
     <build>
         <finalName>struts2Demo</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>

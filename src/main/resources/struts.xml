@@ -90,6 +90,7 @@
         </action>
     </package>
 
+    <!-- http://localhost:8080/error/test1.action -->
     <package name="error" extends="json-default" namespace="/error">
         <action name="*" method="{1}"  class="org.zk.struts2Demo.action.test.ErrorAction">
             <result name="success">/view/test/error.jsp</result>
