@@ -1,6 +1,7 @@
 package org.zk.struts2Demo.action.test;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.lang.StringUtils;
 import org.zk.struts2Demo.entity.User;
 
 import java.util.Date;
@@ -55,5 +56,18 @@ public class ConvertAction extends ActionSupport{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public void validate() {
+        if(!StringUtils.contains(username, "zk")) {
+            addFieldError("username", "用户名必须包含zk");
+        }
+    }
+
+    public void validateTest1() {
+        if(!StringUtils.contains(username, "zk")) {
+            addFieldError("username", "用户名必须包含zk, test1");
+        }
     }
 }
