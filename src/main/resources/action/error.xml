@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- http://localhost:8080/error/test1.action -->
+    <package name="error" extends="json-default" namespace="/error">
+        <action name="*" method="{1}"  class="org.zk.struts2Demo.action.test.ErrorAction">
+            <result name="success">/view/test/error.jsp</result>
+        </action>
+    </package>
+
+</struts>

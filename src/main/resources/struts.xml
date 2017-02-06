@@ -27,80 +27,9 @@
         </action>
     </package>
 
-    <package name="convert" namespace="/convert" extends="struts-default">
-        <interceptors>
-            <interceptor name="userAuthority" class="org.zk.struts2Demo.interceptor.AuthInterceptor" />
-            <interceptor-stack name="myStack">
-                <interceptor-ref name="userAuthority" />
-                <interceptor-ref name="defaultStack" /> <!-- 默认拦截器栈 -->
-            </interceptor-stack>
-        </interceptors>
 
-        <!-- 修改默认拦截器栈 -->
-        <default-interceptor-ref name="myStack" />
-
-        <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.ConvertAction">
-            <result name="success">/view/test/convertSuccess.jsp</result>
-            <result name="input">/view/test/convertForm.jsp</result>
-        </action>
-    </package>
-
-    <package name="token" extends="struts-default" namespace="/token">
-        <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TokenAction">
-            <result name="input">/view/test/tokenForm.jsp</result>
-            <result name="success">/view/test/tokenSuccess.jsp</result>
-            <result name="invalid.token">/view/test/tokenFail.jsp</result>
-
-            <interceptor-ref name="tokenSession">
-                <param name="excludeMethods">input</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-        </action>
-    </package>
-
-    <package name="ajax" extends="struts-default" namespace="/ajax">
-        <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.AjaxAction">
-            <result name="input">/view/test/tokenForm.jsp</result>
-            <result name="success" type="stream">
-                <param name="contentType">application/json</param>
-                <param name="inputName">result</param>
-            </result>
-        </action>
-    </package>
-
-    <!-- http://localhost:8080/ajax2/test.action -->
-    <package name="ajax2" extends="json-default" namespace="/ajax2">
-        <action name="test"  class="org.zk.struts2Demo.action.test.Ajax2Action">
-            <result type="json">
-            </result>
-        </action>
-    </package>
-
-    <!-- ajax 进行token验证后，需要刷新表单的token，如果是token重复需要给出提示-->
-    <package name="ajaxToken" extends="json-default" namespace="/ajaxToken">
-        <action name="*" method="{1}"  class="org.zk.struts2Demo.action.test.AjaxTokenAction">
-            <result name="input">/view/test/ajaxTokenForm.jsp</result>
-            <result name="success" type="json">
-            </result>
-            <result name="invalid.token">/view/test/tokenFail.jsp</result>
-            <interceptor-ref name="token">
-                <param name="excludeMethods">input</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-        </action>
-    </package>
-
-    <!-- http://localhost:8080/error/test1.action -->
-    <package name="error" extends="json-default" namespace="/error">
-        <action name="*" method="{1}"  class="org.zk.struts2Demo.action.test.ErrorAction">
-            <result name="success">/view/test/error.jsp</result>
-        </action>
-    </package>
-
-
-
-    <include file="action/login.xml"/>
-    <include file="action/resultType.xml"/>
+    <!--<include file="action/login.xml"/>
+    <include file="action/resultType.xml"/>-->
 
 
 
