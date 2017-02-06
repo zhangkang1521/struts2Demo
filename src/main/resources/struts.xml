@@ -7,6 +7,7 @@
     <constant name="struts.devMode" value="true"/>
     <!--<constant name="struts.enable.DynamicMethodInvocation" value="true" />-->
     <constant name="struts.ui.theme" value="xhtml"/>
+    <constant name="struts.multipart.parser" value="jakarta"/>
 
 
     <!-- 统一异常处理 -->
@@ -24,6 +25,15 @@
     <package name="test" namespace="/test" extends="struts-default">
         <action name="*" method="{1}" class="org.zk.struts2Demo.action.test.TestAction">
             <result>/view/test/{1}.jsp</result>
+        </action>
+    </package>
+
+    <package name="upload" namespace="/upload" extends="struts-default">
+        <action name="upload"  class="org.zk.struts2Demo.action.test.UploadAction">
+            <result>/view/upload/uploadSuccess.jsp</result>
+        </action>
+        <action name="*">
+            <result>/view/upload/{1}.jsp</result>
         </action>
     </package>
 
