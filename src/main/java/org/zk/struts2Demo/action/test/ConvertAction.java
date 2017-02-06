@@ -1,6 +1,7 @@
 package org.zk.struts2Demo.action.test;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import org.zk.struts2Demo.entity.User;
 
 import java.util.Date;
@@ -29,6 +30,7 @@ public class ConvertAction extends ActionSupport{
         return age;
     }
 
+    @RequiredStringValidator(message = "必须输入年龄")
     public void setAge(Integer age) {
         this.age = age;
     }
