@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="upload" namespace="/upload" extends="struts-default">
+        <action name="upload"  class="org.zk.struts2Demo.action.test.UploadAction">
+            <interceptor-ref name="fileUpload">
+                <!--<param name="allowedTypes">image/png,image/gif,image/jpeg</param>-->
+                <param name="allowedExtensions">png,gif,jpg,jpeg</param>
+                <param name="maximumSize">1000000</param> <!-- 单位字节 -->
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+            <result>/view/upload/uploadSuccess.jsp</result>
+            <result name="input">/view/upload/uploadForm.jsp</result>
+        </action>
+        <action name="*">
+            <result>/view/upload/{1}.jsp</result>
+        </action>
+    </package>
+</struts>

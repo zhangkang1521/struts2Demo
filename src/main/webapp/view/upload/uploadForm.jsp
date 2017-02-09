@@ -5,6 +5,7 @@
     <title>upload form</title>
 </head>
 <body>
+<s:actionerror></s:actionerror>
 <s:form action="upload" enctype="multipart/form-data">
     <s:textfield label="标题" name="title"></s:textfield>
     <s:file name="file1" label="文件1"></s:file>
