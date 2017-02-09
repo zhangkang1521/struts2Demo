@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- http://localhost:8080/download/download.action -->
+    <package name="download" namespace="/download" extends="struts-default">
+        <action name="download" class="org.zk.struts2Demo.action.test.DownloadAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">targetFile</param>
+                <param name="contentDisposition">filename="struts.png"</param>
+            </result>
+            <result name="input">/view/login/loginForm.jsp</result>
+        </action>
+    </package>
+</struts>
