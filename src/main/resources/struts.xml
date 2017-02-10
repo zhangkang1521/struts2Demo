@@ -30,11 +30,35 @@
         </action>
     </package>
 
+    <package name="interceptorTest" namespace="/interceptorTest" extends="struts-default">
+        <!-- 定义拦截器 -->
+        <interceptors>
+            <interceptor name="userAuthority" class="org.zk.struts2Demo.interceptor.AuthInterceptor" />
+            <interceptor name="simple" class="org.zk.struts2Demo.interceptor.SimpleInterceptor"/>
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="userAuthority" />
+                <interceptor-ref name="defaultStack" /> <!-- 默认拦截器栈 -->
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 修改默认拦截器栈 -->
+        <!--<default-interceptor-ref name="myStack" />-->
+
+
+        <action name="*" class="org.zk.struts2Demo.action.test.InterceptorTestAction">
+            <result>/view/test/test.jsp</result>
+            <interceptor-ref name="simple"/>
+            <interceptor-ref name="userAuthority"/>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+    </package>
 
 
 
-    <!--<include file="action/login.xml"/>
-    <include file="action/resultType.xml"/>-->
+
+
+    <include file="action/upload.xml"/>
 
 
 

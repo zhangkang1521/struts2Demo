@@ -6,12 +6,15 @@
 <struts>
     <package name="upload" namespace="/upload" extends="struts-default">
         <action name="upload"  class="org.zk.struts2Demo.action.test.UploadAction">
-            <interceptor-ref name="fileUpload">
-                <!--<param name="allowedTypes">image/png,image/gif,image/jpeg</param>-->
+            <!--<interceptor-ref name="fileUpload">
+                &lt;!&ndash;<param name="allowedTypes">image/png,image/gif,image/jpeg</param>&ndash;&gt;
                 <param name="allowedExtensions">png,gif,jpg,jpeg</param>
-                <param name="maximumSize">1000000</param> <!-- 单位字节 -->
+                <param name="maximumSize">1000000</param> &lt;!&ndash; 单位字节 &ndash;&gt;
+            </interceptor-ref>-->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.allowedExtensions">png,doc</param> <!--  覆盖默认拦截器参数-->
+                <param name="fileUpload.maximumSize">1000000</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"/>
             <result>/view/upload/uploadSuccess.jsp</result>
             <result name="input">/view/upload/uploadForm.jsp</result>
         </action>

@@ -13,8 +13,10 @@ public class AuthInterceptor implements Interceptor {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthInterceptor.class);
 
     public String intercept(ActionInvocation invocation) throws Exception {
-        LOGGER.debug("auth intercept");
-        return invocation.invoke();
+        LOGGER.info("### AuthInterceptor begin ###");
+        String result = invocation.invoke();
+        LOGGER.info("### AuthInterceptor end ###");
+        return result;
     }
 
     public void destroy() {
