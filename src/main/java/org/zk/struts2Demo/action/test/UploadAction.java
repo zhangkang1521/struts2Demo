@@ -1,7 +1,6 @@
 package org.zk.struts2Demo.action.test;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.deploy.util.StringUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
